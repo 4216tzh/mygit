@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8"/>
+	<title>上海爱信诺航天信息有限公司</title>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body >
+	<h1>请您先登录</h1>
+	<br>
+		<a href="/logins">登录</a>
+		<a href="/loginout">登出</a>
+	</br>
+	
+		<input id="username" name="username">
+		<input id="password" name="password">
+		<input id="submit" type="button">
+	<hr>
+		<h5>1111</h5>
+		<h5>2222</h5>
+	</hr>
+	
+</body>
+<script type="text/javascript">
+	var names=$("#username").val();
+	var pass=$("#password").val();
+	$.ajax({
+		type:"post",
+		url:"/teacher/insert",
+		data:{},
+		success:function(data){
+			if(data=="success"){
+				
+			}else{
+				
+			}
+			
+		}
+	})
+</script>
+</html>

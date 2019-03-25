@@ -1,0 +1,223 @@
+一、jdk中的一些常用集合有哪些？
+1.colletion是所有集合的基类，collections是集合的工具类
+1.1 map<K,V>键值对方式存储
+		hashmap<k,v> 比较常用，无序，非线程安全，hashmap 的实现是一个数组，每个数组元素是一个LinkList结构
+		treemap<k,v> 有序，非线程安全
+		hashtable线程安全，包装hashmap，在使用的一些方法上加入synchronized关键字，这个是基于jvm层面实现的，高并发下，效率很低
+		Collections.synchronizedMap也是同理，使用synchronized关键字锁定共享对象;
+		ConcurrentHashMap线程安全，在jdk1.8中，使用CAS(compare and swap)+synchronized实现线程安全
+		https://blog.csdn.net/cheidou123/article/details/79370485?utm_source=blogxgwz2  //JDK1.8之后的ConcurrentHashMap详解
+		
+		jdk1.8
+		https://blog.csdn.net/wushiwude/article/details/75331926 红黑树
+		改进一：取消segments字段，直接采用transient volatile Node<K,V>[] table保存数据，采用table数组元素作为锁，从而实现了对每一行数据进行加锁，进一步减少并发冲突的概率。
+		改进二：将原先table数组＋单向链表的数据结构，变更为table数组＋单向链表＋红黑树的结构。对于hash表来说，最核心的能力在于将key hash之后能均匀的分布在数组中。
+						如果hash之后散列的很均匀，那么table数组中的每个队列长度主要为0或者1。但实际情况并非总是如此理想，虽然ConcurrentHashMap类默认的加载因子为0.75，
+						但是在数据量过大或者运气不佳的情况下，还是会存在一些队列长度过长的情况，如果还是采用单向列表方式，那么查询某个节点的时间复杂度为O(n)；
+						因此，对于个数超过8(默认值)的列表，jdk1.8中采用了红黑树的结构，那么查询的时间复杂度可以降低到O(logN)，可以改进性能。
+1.2 list自动扩容集合
+		ArrayList是基于数组实现的，是一个数组队列。可以动态的增加容量！
+		LinkedList是基于链表实现的，是一个双向循环列表。可以被当做堆栈使用！(Node<E> node节点)
+		Vector是基于数组实现的，是一个矢量队列，是线程安全的！
+		Stack是基于数组实现的，是栈，它继承与Vector，特性是FILO（先进后出）！
+1.3 queqe队列
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		线性表: 1.链表是用一组任意的存储单元存储线性表的数据元素（这组存储单元可以是连续的，也可以是不连续的，由一个一个的node节点组合而成),
+							包括数据域和指针域，数据域存数据，指针域指示其后继的信息
+							链表分为双向链表(前一个node节点信息，data，后一个node节点信息)、单链表(data，后一个node节点信息)
+							
+						2.顺序表是用一组地址连续的存储单元依次存储线性表的数据元素，这种存储结构的线性表称为顺序表。
+		https://blog.csdn.net/smile_Accompany/article/details/78798256
+
+2.java线程安全有几种方式
+3.java中创建一个实例对象的方式有几种
+类实现克隆接口，克隆一个实例;new实例对象以及使用反射;实现序列化接口的类，通过IO流反序列化读取一个类，获得实例
+4.MySQL InnoDB、Mysaim的特点？
+两种类型的主要区别就是InnoDB支持事务处理与外键和行级锁，而MyISAM不支持。
+https://blog.csdn.net/xiaolanmyself/article/details/16944109
+5.理解数据库的4种隔离级别
+https://www.cnblogs.com/520playboy/p/6291437.html
+事务ACID属性，即原子性（Atomicity）、一致性(Consistency)、隔离性（Isolation）、持久性（Durability）
+
+volatile关键字
+https://www.cnblogs.com/dolphin0520/p/3920373.html
+当CPU写数据时，如果发现操作的变量是共享变量，即在其他CPU中也存在该变量的副本，会发出信号通知其他CPU将该变量的缓存行置为无效状态，
+因此当其他CPU需要读取这个变量时，发现自己缓存中缓存该变量的缓存行是无效的，那么它就会从内存重新读取。
+被修饰变量
+1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。
+2）禁止进行指令重排序。
+并发编程的三个特性
+原子性：即一个操作或者多个操作 要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行。
+可见性：可见性是指当多个线程访问同一个变量时，一个线程修改了这个变量的值，其他线程能够立即看得到修改的值。
+有序性：即程序执行的顺序按照代码的先后顺序执行
+
+
+
+spring事物管理
+https://blog.csdn.net/remote_roamer/article/details/53289173
+https://blog.csdn.net/zhouyy40308/article/details/78630275
+知识点
+https://www.cnblogs.com/yswyzh/p/9467008.html
+springboot配置文件问题
+https://blog.csdn.net/chy2z/article/details/80104185
+https://blog.csdn.net/summer_sy/article/details/72182643
+https://blog.csdn.net/u012072806/article/details/80395388
+https://blog.csdn.net/a674164971/article/details/80431043
+
+easyui可编辑表格
+https://blog.csdn.net/zhanglu1236789/article/details/80348548
+https://blog.csdn.net/JE_GE/article/details/53363817
+
+
+//面试问题
+https://blog.csdn.net/weixin_41098980/article/details/79529495
+https://www.cnblogs.com/ipetergo/p/6505910.html
+
+springboot启动注入过程
+一个springboot的web项目启动无需部署在tomcat等启动容器中，因为框架内置 容器
+每个springboot项目都有一个入口类，也可以说为启动类
+其次是@springbooApplication注解，这是一个复合注解，主要有三个功能
+1.扫描指定路径下的所有package
+2.完成自动配置功能，初始化ioc容器
+@EnableAutoConfiguration也是借助@Import的帮助，将所有符合自动配置条件的bean定义加载到IoC容器，仅此而已
+
+
+spring.factories配置文件，通过读取这个配置文件(key-value方式存储),找寻到所需的配置类，其中value配置的是类全名(包名+类名)
+
+
+
+springmvc执行一次请求的处理流程
+http://www.cnblogs.com/ipetergo/p/6561081.html
+1.前端页面收到发起一个请求，springMVC的前端控制器dispactherServlet收到请求获取请求中的url，
+2.然后在调用handlemapping获取handle配置的相关对象，得到一个handleAdapter
+5.  Handler执行完成后，向DispatcherServlet 返回一个ModelAndView对象；
+6.  根据返回的ModelAndView，选择一个适合的ViewResolver（必须是已经注册到Spring容器中的ViewResolver)返回给DispatcherServlet ；
+7. ViewResolver 结合Model和View，来渲染视图
+8. 将渲染结果返回给客户端
+
+
+两种代理的区别
+jdk动态代理是面向接口的，实现InvocationHanlder接口，通过反射生成一个实现代理接口的匿名类
+cglib代理是面向类的，对代理对象类的class文件加载进来，通过修改其字节码生成子类来处理。
+https://blog.csdn.net/yhl_jxy/article/details/80635012
+
+mysql索引
+https://www.cnblogs.com/chenshishuo/p/5030029.html
+//mysql的一些问题
+https://www.jianshu.com/p/7331223c5a58
+
+
+springboot启动
+https://blog.csdn.net/dm_vincent/article/details/76735888
+
+sql优化
+https://www.cnblogs.com/Jacck/p/8030455.html
+https://blog.csdn.net/m0_37896272/article/details/78177484
+
+jpa批量插入数据
+https://blog.csdn.net/carry1beyond/article/details/81062984
+
+spring特性
+https://blog.csdn.net/seashouwang/article/details/80260347
+https://www.cnblogs.com/wangyayun/p/6800902.html
+
+//redis分布式锁实现
+https://www.cnblogs.com/0201zcr/p/5942748.html
+
+//redis一些问题
+https://www.cnblogs.com/fishlynn/p/9591021.html
+
+
+Spring 框架是一个分层架构，由 7 个定义良好的模块组成。Spring 模块构建在核心容器之上，核心容器定义了创建、配置和管理 bean 的方式，
+组成 Spring 框架的每个模块（或组件）都可以单独存在，或者与其他一个或多个模块联合实现。每个模块的功能如下：
+
+ 核心容器：核心容器提供 Spring 框架的基本功能。核心容器的主要组件是 BeanFactory，它是工厂模式的实现。
+ 					BeanFactory 使用控制反转 （IOC）模式将应用程序的配置和依赖性规范与实际的应用程序代码分开。
+
+ Spring 上下文：Spring 上下文是一个配置文件，向 Spring 框架提供上下文信息。
+ 								Spring 上下文包括企业服务，例如 JNDI、EJB、电子邮件、国际化、校验和调度功能。
+
+ Spring AOP：通过配置管理特性，Spring AOP 模块直接将面向方面的编程功能集成到了 Spring 框架中。所以，可以很容易地使 Spring 框架管理的任何对象支持 AOP。
+ 							Spring AOP 模块为基于 Spring 的应用程序中的对象提供了事务管理服务。通过使用 Spring AOP，不用依赖 EJB 组件，就可以将声明性事务管理集成到应用程序中。
+
+ Spring DAO：JDBC DAO 抽象层提供了有意义的异常层次结构，可用该结构来管理异常处理和不同数据库供应商抛出的错误消息。异常层次结构简化了错误处理，
+ 							并且极大地降低了需要编写的异常代码数量（例如打开和关闭连接）。Spring DAO 的面向 JDBC 的异常遵从通用的 DAO 异常层次结构。
+
+ Spring ORM：Spring 框架插入了若干个 ORM 框架，从而提供了 ORM 的对象关系工具，其中包括 JDO、Hibernate 和 iBatis SQL Map。所有这些都遵从 Spring 的通用事务和 DAO 异常层次结构。
+
+ Spring Web 模块：Web 上下文模块建立在应用程序上下文模块之上，为基于 Web 的应用程序提供了上下文。所以，Spring 框架支持与 Jakarta Struts 的集成。
+ 									Web 模块还简化了处理多部分请求以及将请求参数绑定到域对象的工作。
+
+ Spring MVC 框架：MVC 框架是一个全功能的构建 Web 应用程序的 MVC 实现。通过策略接口，MVC 框架变成为高度可配置的，MVC 容纳了大量视图技术，其中包括 JSP、Velocity、Tiles、iText 和 POI。
+
+
+2019-03-04知识集锦
+https://www.jianshu.com/p/2800737c9de8
+
+
+springboot中使用事物注解的问题
+https://www.cnblogs.com/interfacehwx/p/6517892.html
+分布式的一些基础项目搭建
+http://www.cnblogs.com/chry/p/7260778.html
+悲观锁和乐观锁
+https://blog.csdn.net/demo_gsl/article/details/80993306
+悲观：对数据的修改持保守态度，意思就是每次只能有一个线程访问数据，进行对数据的修改，若其他的线程想要修改数据，就要等待本线程完成数据修改，释放资源
+乐观：对数据的修改只有在提交时才会检查数据的完整性，若发生冲突则不断地进行尝试，则让返回用户错误的信息，让用户决定如何去做
+
+
+
+spring jpa的事物管理
+https://www.cnblogs.com/interfacehwx/p/6517892.html
+使用@Transactional注解交给spring管理事物，@Transactional的默认REQUIRED，
+REQUIRED的含义是，支持当前已经存在的事务，如果还没有事务，就创建一个新事务
+使用@Transactional注解的方法分为static和非static，只有在非static方法上使用事物注解生效(为同一个事物，异常会回滚)，
+而static方法则为多个事物(比如调用的static方法中循环存储100条数据，若存到50条出错，不会回滚)
+
+
+jvm的一些问题
+https://mp.weixin.qq.com/s/uP-f4jHE4fZyjgozO3qKFg
+jvm分区
+https://www.cnblogs.com/aspirant/p/8662690.html		//垃圾回收机制
+方法区：存放JVM加载的类型信息。包括:类型基本信息，常量池，字段信息，方法信息，类变量，指向ClassLoader的引用，Class类的引用，方法表等。
+（对应JVM内存配置中的-PermSize等）
+
+ java堆：程序中创建的类的实例和数组，包括class对象和exception对象，存放在堆里面。堆中除了存储对象的实例数据外，还要存储该对象指向方法区中类型信息的指针。
+
+（JVM中所有的线程共享堆空间，对应JVM内存配置中的-Xms和-Xmx等）
+
+ java栈：当JVM创建一个新线程时，都会产生线程计数器（PC Register）和栈。每一次方法调用都会产生栈帧，栈帧中包含局部变量区和操作数栈。
+
+（JVM中栈被线程独享，对应JVM内存配置中的-Xss）
+
+ 线程计数器：每个线程拥有自己的程序计数器，它指向下一条指令。当线程调用本地方法的时候， 它为undefined。
+
+ 本地方法栈：当JVM线程调用了本地方法， 则会跳入本地方法栈。本地方法返回后可能再次跳回java方法栈。
+
+（JVM支持本地方法调用，故JVM占用的OS内存可能会超出JVM堆内存大小设置，甚至会产生本地内存泄漏）
+
+//一些数据库锁概念
+https://www.cnblogs.com/bigben0123/p/8986507.html
+参考《可伸缩服务架构：框架与中间件》一书的第4章的内容
+对于一般的数据库，>=、BETWEEN、IN、LIKE 等都可以走索引，而 NOT IN 不能走索引，如果匹配的字符以 % 开头，是不能走索引的，这些必须记住了。
+
+
+《Java并发编程实战》
+
+//知乎java的问题
+https://www.jianshu.com/p/c2500e8cf679
+//hashmap
+https://blog.csdn.net/ll530304349/article/details/53056346
+
+
+去对应目录C:\Users\specter\.ssh里（specter为电脑用户名，每个人不同）用记事本打开id_rsa.pub，得到ssh key公钥

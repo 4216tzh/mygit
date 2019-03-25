@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8"/>
+	<title>上海爱信诺航天信息有限公司</title>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body >
+	<h5>my success</h5>
+	<div id="issueInfoUpdatedlg" class="easyui-dialog" style="width:400px"
+            closed="true" buttons="#dlg-buttons">
+	        <form id="issueInfoSave" method="post" style="margin:0;padding:20px 50px">
+	            <div style="margin-bottom:20px;font-size:14px;border-bottom:1px solid #ccc">销方信息</div>
+	            <input id="issueInfoId" type="hidden"/>
+	            <div style="margin-bottom:10px">
+	                <input id="sellerAddressTel" name="sellerAddressTel" class="easyui-textbox" required="true" label="销方地址电话:" missingMessage="该选项为必填项" style="width:100%"/>
+	            </div>
+	            <div style="margin-bottom:10px">
+	                <input id="sellerBankAccountNr" name="sellerBankAccountNr"  class="easyui-textbox" required="true" label="销方银行账号:" missingMessage="该选项为必填项" style="width:100%"/>
+	            </div>
+	            <div style="margin-bottom:10px">
+	                <input id="companyCode" name="companyCode" class="easyui-combobox" required="true" label="分公司代码:" missingMessage="该选项为必填项" style="width:100%"/>
+	            </div>
+	            
+	             <!-- <div style="margin-bottom:10px">
+	                <input id="xxx" name="xxx" class="easyui-numberbox" required="true" label="货币种类:" missingMessage="该选项为必填项" style="width:100%"/>
+	            </div> -->
+	        </form>
+	    </div>
+	<!--     保存对话框的按钮 -->
+	    <div id="dlg-buttons">
+	        <a href="/fri/redis" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveissueInfo()" style="width:90px">保存</a>
+	        <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#issueInfoUpdatedlg').dialog('close')" style="width:90px">取消</a>
+	    </div> 
+</body>
+</html>

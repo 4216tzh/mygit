@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+encoding//src/com/java/connection/JedisPoolUtils.java=UTF-8
+encoding//src/com/java/ioc/PathUtil.java=UTF-8
+encoding//src/com/java/thread/RedisLockServiceImpl.java=UTF-8

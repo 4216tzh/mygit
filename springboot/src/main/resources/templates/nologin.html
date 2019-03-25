@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8"/>
+	<title>上海爱信诺航天信息有限公司</title>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body >
+	<h1>请您先登录</h1>
+	<br>
+		<a href="/logins">登录</a>
+		<a href="/loginout">登出</a>
+		<a href="/pay/getorder">测试</a>
+	</br>
+	<br>
+		<button>click me</button>
+	</br>
+	<hr>
+		<h5>1111</h5>
+		<h5>2222</h5>
+	</hr>
+<script type="text/javascript">
+
+	window.onload=function(){
+		var btn=document.getElementsByTagName('button')[0];
+		btn.onclick=function(){
+			alert(this.firstChild.nodeValue);
+		}
+	}
+
+</script>		
+</body>
+</html>

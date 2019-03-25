@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//conf/tableColumn.xml=UTF-8
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/java/springboot/pay/wx/Pay4WxAction.java=UTF-8
+encoding//src/main/java/com/java/springboot/pay/wx/util/GenerateQrCodeUtil.java=UTF-8
+encoding//src/main/java/com/java/springboot/pay/wx/util/MD5Util.java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/templates/index.html=UTF-8
+encoding//src/main/resources/templates/teacher.html=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8

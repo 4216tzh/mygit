@@ -1,0 +1,27 @@
+1.集合(collection，list，map)，线程安全集合，
+2.锁(lock,synchronized),java信号灯
+3.线程池
+4.设计模式
+5.反射以及代理
+6.任务调度
+7.读取txt文件，上传下载excel文件，以及图片的上传下载，excel文件的读取poi和jxl两种方式
+8.springboot中的一些拦截器、过滤器、监听器、websocket、redis连接、aop与自定义注解、jpa
+9.文件的压缩以及解压(防止中文乱码，注：主要是文件名和文件夹名)
+10.springboot与shiro结合，以及spring_security,可做登录验证、权限、角色信息管理的功能(待学习)
+11.触发器，存储过程，视图，索引
+12。mvvm,nio(待学习)
+
+
+spring security涉及的接口
+
+
+org.springframework.security.core.userdetails.User
+SessionInformationExpiredStrategy
+UserDetailsService
+PermissionEvaluator
+DefaultWebSecurityExpressionHandler
+AccessDecisionManager
+AccessDeniedHandler
+ConfigAttribute
+GrantedAuthority
+FilterInvocationSecurityMetadataSource
